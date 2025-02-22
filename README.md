@@ -1,2 +1,2 @@
 # img-compress
-画像圧縮するやつ
+gulpで画像圧縮する
