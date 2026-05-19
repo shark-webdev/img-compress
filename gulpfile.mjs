@@ -1,6 +1,7 @@
 import gulp from 'gulp';
-const { series, parallel, src, dest, gulpWatch } = gulp;
+const { series, src, dest } = gulp;
 // 各プラグイン読み込み
+import { existsSync } from 'node:fs';
 import { deleteAsync } from 'del'; // 削除
 import imagemin, {mozjpeg, svgo} from 'gulp-imagemin'; // 画像の圧縮
 import pngquant from 'imagemin-pngquant'; // PNG画像はこのプラグインが軽量化率高い
@@ -19,8 +20,12 @@ const Clean = async () => {
 };
 
 // 画像圧縮 ====================================
-const ImgImagemin = () => (
-  src(srcPath.img, {encoding: false}) // 圧縮するファイルを指定、encoding: false を入れないと壊れる
+const ImgImagemin = () => {
+  if (!existsSync('./src')) {
+    return Promise.resolve();
+  }
+
+  return src(srcPath.img, {encoding: false, allowEmpty: true}) // 圧縮するファイルを指定、encoding: false を入れないと壊れる
     .pipe(imagemin([
       mozjpeg({quality: 90, progressive: true}), // JPEG画像の圧縮設定
       pngquant({  // PNG画像の圧縮設定
@@ -37,8 +42,8 @@ const ImgImagemin = () => (
       verbose: true // ログ情報出力
     }))
   .pipe(dest(destPath.img)) // 出力先ディレクトリを指定
-);
-export { ImgImagemin };
+};
+export { Clean, ImgImagemin };
 
 // 実行用 ====================================
 export default series(Clean, ImgImagemin);
