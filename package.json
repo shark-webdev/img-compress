@@ -6,8 +6,7 @@
   "scripts": {
     "build": "gulp",
     "compress": "gulp ImgImagemin",
-    "clean": "gulp Clean",
-    "gulp": "gulp"
+    "clean": "gulp Clean"
   },
   "devDependencies": {
     "del": "^8.0.0",

@@ -29,7 +29,7 @@ const ImgImagemin = () => {
     .pipe(imagemin([
       mozjpeg({quality: 90, progressive: true}), // JPEG画像の圧縮設定
       pngquant({  // PNG画像の圧縮設定
-        quality: [0.8, 0.95],
+        quality: [0.75, 0.85],
         speed: 1,
       }),
       svgo({ // SVG画像の圧縮設定
