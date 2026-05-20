@@ -1,2 +1,6 @@
 node_modules/
+.pnpm-store/
 dest/
+.env
+.DS_Store
+Thumbs.db
