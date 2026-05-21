@@ -23,7 +23,7 @@ pnpm install
 ### Windowsの場合（BATファイルで実行）
 
 1. セットアップ後、 `src` ディレクトリに圧縮したい画像を入れます。
-2. `imagemin.bat` をダブルクリックします。
+2. `compress-images.bat` をダブルクリックします。
 3. `dest` ディレクトリの中身が削除され、圧縮後の画像が出力されます。
 
 ### コマンドで実行する場合（Windows / macOS / Linux）
@@ -49,7 +49,7 @@ pnpm clean
 
 | 形式 | 圧縮内容 |
 | --- | --- |
-| jpg / jpeg | sharpでクオリティ 90%、progressive JPEG。出力拡張子は `jpg` に統一 |
+| jpg / jpeg | sharpでクオリティ 90%、progressive JPEG。出力拡張子は `.jpg` に統一 |
 | png | sharpでクオリティ 85%、高圧縮設定 |
 | webp | sharpでクオリティ 85% |
 | avif | sharpでクオリティ 80% |
