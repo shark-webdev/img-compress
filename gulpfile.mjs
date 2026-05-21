@@ -79,22 +79,22 @@ const compressWithSharp = () => new Transform({
 });
 
 // destディレクトリ内のファイルを削除 ============
-const Clean = async () => {
+const clean = async () => {
   await deleteAsync([`${destPath.img}/**`, `!${destPath.img}`]);
 };
 
 // 画像圧縮 ====================================
-const ImgSharp = () => {
+const imgSharp = () => {
   if (!existsSync('./src')) {
     return Promise.resolve();
   }
 
-  return src(srcPath.img, {encoding: false, allowEmpty: true}) // 圧縮するファイルを指定、encoding: false を入れないと壊れる
+  return src(srcPath.img, { encoding: false, allowEmpty: true }) // 圧縮するファイルを指定、encoding: false を入れないと壊れる
     .pipe(compressWithSharp())
-  .pipe(dest(destPath.img)) // 出力先ディレクトリを指定
+    .pipe(dest(destPath.img)) // 出力先ディレクトリを指定
 };
-const ImgImagemin = ImgSharp;
-export { Clean, ImgSharp, ImgImagemin };
+const imgImagemin = imgSharp;
+export { clean, imgSharp, imgImagemin };
 
 // 実行用 ====================================
-export default series(Clean, ImgSharp);
+export default series(clean, imgSharp);
