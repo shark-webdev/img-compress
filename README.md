@@ -28,20 +28,20 @@ pnpm install
 
 ### コマンドで実行する場合（Windows / macOS / Linux）
 
-```bash
+```powershell
 pnpm build
 ```
 
 圧縮のみ実行する場合は、次のコマンドを使います。  
 ※ `dest` 内ファイルを消さずに追加・上書きします。
 
-```bash
+```powershell
 pnpm compress
 ```
 
 `dest` ディレクトリの削除のみ実行する場合は、次のコマンドを使います。
 
-```bash
+```powershell
 pnpm clean
 ```
 
@@ -49,17 +49,22 @@ pnpm clean
 
 | 形式 | 圧縮内容 |
 | --- | --- |
-| jpg / jpeg | クオリティ 90%、progressive JPEG |
-| png | クオリティ 75%〜85% |
-| svg | SVGOで最適化 |
+| jpg / jpeg | sharpでクオリティ 90%、progressive JPEG。出力拡張子は `jpg` に統一 |
+| png | sharpでクオリティ 85%、高圧縮設定 |
+| webp | sharpでクオリティ 85% |
+| avif | sharpでクオリティ 80% |
+| tiff | sharpでクオリティ 85%、LZW圧縮 |
+| gif | sharpで最適化 |
+
+出力ファイルの拡張子は小文字に変換され、 `jpeg` は `jpg` に統一されます。  
+sharpで処理対象外のファイルは圧縮せず、拡張子のみ正規化して出力します。
 
 ## 使用パッケージ
 
 - gulp
 - gulp-cli
 - del
-- gulp-imagemin
-- imagemin-pngquant
+- sharp
 
 ## 補足
 
