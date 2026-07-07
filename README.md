@@ -49,15 +49,15 @@ pnpm clean
 
 | 形式 | 圧縮内容 |
 | --- | --- |
-| jpg / jpeg | sharpでクオリティ 90%、progressive JPEG。出力拡張子は `.jpg` に統一 |
-| png | sharpでクオリティ 85%、高圧縮設定 |
-| webp | sharpでクオリティ 85% |
-| avif | sharpでクオリティ 80% |
-| tiff | sharpでクオリティ 85%、LZW圧縮 |
+| jpg / jpeg | sharpでクオリティ 92%、progressive JPEG。出力拡張子は `.jpg` に統一 |
+| png | sharpでロスレス圧縮、compressionLevel 9、effort 10 |
+| webp | sharpでクオリティ 92%、alphaQuality 100 |
+| avif | sharpでクオリティ 90% |
+| tif / tiff | sharpでクオリティ 92%、LZW圧縮 |
 | gif | sharpで最適化 |
 
 出力ファイルの拡張子は小文字に変換され、 `jpeg` は `jpg` に統一されます。  
-sharpで処理対象外のファイルは圧縮せず、拡張子のみ正規化して出力します。
+処理対象は上記の画像形式のみです。対象外のファイルは安全のため出力しません。
 
 ## 使用パッケージ
 
@@ -74,3 +74,4 @@ sharpで処理対象外のファイルは圧縮せず、拡張子のみ正規化
 
 設計意図や制作メモはこちらです。  
 [Notion Portfolio](https://gelatinous-alligator-d9a.notion.site/Portfolio-2fe45c4eb2d980aca9e3e247af534dd9)
+
